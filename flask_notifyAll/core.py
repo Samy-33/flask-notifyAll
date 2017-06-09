@@ -37,3 +37,6 @@ class FlaskNotify:
             to_user=to_user,
             body='Your verification code is {}'.format(code))
         return code
+
+    def send_mailtrap_email(self):
+        pass
