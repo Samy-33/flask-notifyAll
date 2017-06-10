@@ -12,23 +12,22 @@ class FlaskNotify:
             self.init_app(app)
 
     def init_app(self, app):
-        twilio_sid = app.config.get('TWILIO_SID')
-        twilio_token = app.config.get('TWILIO_TOKEN')
-        twilio_number = app.config.get('TWILIO_NUMBER')
-        self._config.update(TWILIO_SID=twilio_sid,
-                            TWILIO_TOKEN=twilio_token,
-                            TWILIO_NUMBER=twilio_number)
+        self._config.update(twilio_sid=app.config.get('TWILIO_SID'),
+                            twilio_token=app.config.get('TWILIO_TOKEN'),
+                            twilio_number=app.config.get('TWILIO_NUMBER'),
+                            mailtrap_user=app.config.get('MAILTRAP_USER'),
+                            mailtrap_pass=app.config.get('MAILTRAP_PASSWORD'))
 
     def send_sms_notification(self, to_user, body):
         try:
             client = Client(
-                self._config.get('TWILIO_SID'),
-                self._config.get('TWILIO_TOKEN')
+                self._config.get('twilio_sid'),
+                self._config.get('twilio_token')
             )
         except TwilioException:
             raise TwilioCredentialError
 
-        client.messages.create(from_=self._config.get('TWILIO_NUMBER'),
+        client.messages.create(from_=self._config.get('twilio_number'),
                                to=to_user,
                                body=body)
 
@@ -40,3 +39,4 @@ class FlaskNotify:
 
     def send_mailtrap_email(self):
         pass
+
