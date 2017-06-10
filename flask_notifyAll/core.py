@@ -1,7 +1,10 @@
+import smtplib
+from email.mime.text import MIMEText
+
 from twilio.base.exceptions import TwilioException
 from twilio.rest import Client
 
-from .twilio_errors import TwilioCredentialError
+from .error import FlaskNotifyEmailError, TwilioCredentialError
 
 
 class FlaskNotify:
@@ -15,6 +18,7 @@ class FlaskNotify:
         self._config.update(twilio_sid=app.config.get('TWILIO_SID'),
                             twilio_token=app.config.get('TWILIO_TOKEN'),
                             twilio_number=app.config.get('TWILIO_NUMBER'),
+                            test_email=app.config.get('TEST_EMAIL'),
                             mailtrap_user=app.config.get('MAILTRAP_USER'),
                             mailtrap_pass=app.config.get('MAILTRAP_PASSWORD'))
 
@@ -37,6 +41,23 @@ class FlaskNotify:
             body='Your verification code is {}'.format(code))
         return code
 
-    def send_mailtrap_email(self):
-        pass
+    def send_mailtrap_email(self, to_user, message, subject, email_port=2525):
 
+        if not isinstance(to_user, list):
+            raise FlaskNotifyEmailError('Argument \'to_user\' must be a list')
+
+        user_name = self._config.get('mailtrap_user')
+        password = self._config.get('mailtrap_pass')
+        test_email = self._config.get('test_email')
+
+        emails_to_string = ', '.join(to_user)
+
+        msg = MIMEText(message)
+        msg['Subject'] = subject
+        msg['From'] = test_email
+        msg['To'] = emails_to_string
+
+        mail = smtplib.SMTP('smtp.mailtrap.io', email_port)
+        mail.login(user_name, password)
+        mail.sendmail(test_email, to_user, msg.as_string())
+        mail.quit()
