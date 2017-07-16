@@ -6,6 +6,10 @@ from twilio.rest import Client
 
 from .error import FlaskNotifyEmailError, TwilioCredentialError
 
+"""
+Notice: Add helper functions to the twilio service.
+"""
+
 
 class FlaskNotify:
     _config = {}
@@ -61,7 +65,3 @@ class FlaskNotify:
         mail.login(user_name, password)
         mail.sendmail(test_email, to_user, msg.as_string())
         mail.quit()
-
-"""
-Add helper functions to the twilio service.
-"""
