@@ -61,3 +61,7 @@ class FlaskNotify:
         mail.login(user_name, password)
         mail.sendmail(test_email, to_user, msg.as_string())
         mail.quit()
+
+"""
+Add helper functions to the twilio service.
+"""
