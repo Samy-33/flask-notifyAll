@@ -9,7 +9,7 @@ setup_info = {
     'name': 'flask_notifyAll',
     'version': version,
     'license': 'MIT',
-    'author': 'Frozen Monkey',
+    'author': 'Mike Yusko',
     'author_email': 'freshjelly12@yahoo.com',
     'description': description,
     'packages': ['flask_notifyAll'],
