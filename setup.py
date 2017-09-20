@@ -15,7 +15,7 @@ setup_info = {
     'packages': ['flask_notifyAll'],
     'keywords': ["flask", "sms", "notifications", "email", "send"],
     'classifiers': [
-        'Development Status :: 1 - Planning',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Programming Language :: Python :: 3.5',
         'License :: OSI Approved :: MIT License'

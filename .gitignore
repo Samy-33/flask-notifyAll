@@ -87,9 +87,3 @@ ENV/
 
 # Ignore idea files
 .idea
-
-# Ignore test file
-tests.py
-
-# Ignore config file
-conf.cfg
