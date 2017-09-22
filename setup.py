@@ -10,6 +10,7 @@ setup_info = {
     'version': version,
     'license': 'MIT',
     'author': 'Mike Yusko',
+    'url': 'https://github.com/MichaelYusko/flask-notifyAll',
     'author_email': 'freshjelly12@yahoo.com',
     'description': description,
     'packages': ['flask_notifyAll'],
