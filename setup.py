@@ -15,7 +15,7 @@ setup_info = {
     'description': description,
     'packages': ['flask_notifyAll'],
     'keywords': ["flask", "sms", "notifications", "email", "send"],
-    'requirements': ['twilio==6.3.0'],
+    'install_requires': ['twilio==6.3.0'],
     'classifiers': [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
