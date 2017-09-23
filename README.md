@@ -1,6 +1,6 @@
 # flask-notifyAll
 
-A Flask extension to access sending *sms/emails/test emails*, providers such as: Twilio, Mailtrap, Man.
+A Flask extension to access sending *sms/emails/test emails*, providers such as: Twilio, Mailtrap.
 
 [![Build Status](https://travis-ci.org/MichaelYusko/flask-notifyAll.svg?branch=master)](https://travis-ci.org/MichaelYusko/flask-notifyAll)
 [![PyPI version](https://badge.fury.io/py/flask-notifyAll.svg)](https://badge.fury.io/py/flask-notifyAll)
