@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 import flask_notifyAll
 
@@ -23,5 +23,6 @@ setup_info = {
         'License :: OSI Approved :: MIT License'
     ],
 }
+
 
 setup(**setup_info)
