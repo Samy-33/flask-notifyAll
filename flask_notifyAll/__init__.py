@@ -4,6 +4,6 @@
 """
 
 from .helpers import generate_verification_code  # noqa
-from .core import FlaskNotify
+from .core import FlaskNotify  # noqa
 
 __version__ = '1.0.2'
