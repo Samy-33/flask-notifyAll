@@ -28,7 +28,8 @@ class TestConfig:
 File with your application
 ```python
 from flask import Flask, request, jsonify
-from flask_notifyAll import FlaskNotify, generate_verification_code
+from flask_notifyAll.core import FlaskNotify
+from flask_notifyAll generate_verification_code
 
 app = Flask(__name__)
 app.config.from_object('conf.TestConfig')
