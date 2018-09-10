@@ -65,6 +65,30 @@ class FlaskNotify:
         )
         return verification_code
 
+    def make_notification_call(self, to_user, from_user, resource_url):
+        """
+        It is expected that resource_url contains already a text with random verification code
+        TODO: Maybe automate putting verification code in the url
+        :param to_user: Mobile number of the user whom the code is to be sent
+        :param from_user: owned twilio number from which call is to be made
+        :param resource_url: Url with file similar to https://demo.twilio.com/docs/voice.xml
+        """
+        try:
+            client = Client(
+                self._config.get('twilio_sid'),
+                self._config.get('twilio_token')
+            )
+        except TwilioException:
+            raise TwilioCredentialError
+
+        call = client.calls.create(
+            to=to_user,
+            from_=from_user,
+            url=resource_url
+        )
+
+        return call.sid
+
     def send_mailtrap_email(self, emails, subject, body, email_port=2525):
         """
         :param emails: An list with email of users
